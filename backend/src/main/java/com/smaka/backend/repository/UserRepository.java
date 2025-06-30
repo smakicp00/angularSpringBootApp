@@ -14,17 +14,17 @@ import java.util.List;
 public class UserRepository implements UserInterface {
 
     @Override
-    public List<User> getAllUsers(){
-        try (Connection connection = DB.source().getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM user")){
+    public List<User> getAllUsers() {
+        try (Connection connection = DB.source().getConnection(); PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM user")) {
             ResultSet resultSet = preparedStatement.executeQuery();
             List<User> users = new ArrayList<>();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 User user = new User(resultSet.getString("username"), resultSet.getString("password"));
                 users.add(user);
             }
+            System.out.println(users);
             return users;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
         }

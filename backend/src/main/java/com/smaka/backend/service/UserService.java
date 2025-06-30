@@ -12,14 +12,18 @@ import java.util.List;
 @Service
 public class UserService {
 
-    @Autowired
-    UserRepository userRepository;
 
-    public List<User> getAllUsers(){
-        return userRepository.getAllUsers();
+    private final UserRepository userRepository;
+
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-
+    public List<User> getAllUsers() {
+        System.out.println(userRepository.getAllUsers());
+        return userRepository.getAllUsers();
+    }
 
 
 }
