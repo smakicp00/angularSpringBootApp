@@ -1,0 +1,36 @@
+# === FRONTEND ===
+
+# Node.js dependencies
+/frontend/node_modules/
+
+# Angular build output
+/frontend/dist/
+
+# Angular output if using Angular Universal
+/frontend/.angular/
+
+# Environment files (ako koristiš)
+# /frontend/src/environments/environment*.ts
+
+# === BACKEND ===
+
+# Maven build folder
+/backend/target/
+
+# Gradle build folder
+/backend/build/
+
+# === IDE / OS ===
+
+# VS Code
+.vscode/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Mac OS
+.DS_Store
+
+# Windows
+Thumbs.db
