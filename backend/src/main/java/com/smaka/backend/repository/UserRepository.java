@@ -30,4 +30,14 @@ public class UserRepository implements UserInterface {
         }
     }
 
+    @Override
+    public void addUser(User user) {
+        try (Connection connection = DB.source().getConnection(); PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO user (username, password) VALUES (?,?)")) {
+            preparedStatement.setString(1, user.getUserName());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

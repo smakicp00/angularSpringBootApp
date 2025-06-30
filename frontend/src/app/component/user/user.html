@@ -1,7 +1,15 @@
 <p>user works!</p>
 
 @for (user of users; track user.userName){
+  <br>
   <H3>{{user.userName}}</H3>
-  <br><br><br><br><br>
   <h3>{{user.password}}</h3>
+
 }
+
+<form action="" method="post">
+  <input type="text" name="userName" [(ngModel)]="userName">
+  <input type="password" name="password" [(ngModel)]="password"><br>
+  <input type="submit" value="Add" (click)="addUser()">
+</form>
+
