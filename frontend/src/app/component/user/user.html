@@ -13,3 +13,14 @@
   <input type="submit" value="Add" (click)="addUser()">
 </form>
 
+<form action="">
+  <input type="text" name="deleteUserName" [(ngModel)]="deleteUserName">
+  <input type="submit" value="Delete" (click)="deleteUser()">
+</form>
+
+<form action="">
+  <input type="text" name="changeUserPassword" [(ngModel)]="changePass">
+  <input type="text" name="newPassword" [(ngModel)]="newPassword">
+  <input type="submit" value="Change" (click)="changeUserPassword()">
+
+</form>

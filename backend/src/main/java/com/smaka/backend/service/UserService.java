@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 
 @Service
@@ -28,5 +29,14 @@ public class UserService {
 
     public void addUser(User user) {
         userRepository.addUser(user);
+    }
+
+    public void deleteUser(String userName) {
+        userRepository.deleteUser(userName);
+    }
+
+
+    public void changeUserPassword(String userName, Map<String, String> map) {
+        userRepository.changeUserPassword(userName,map);
     }
 }

@@ -14,6 +14,9 @@ import {FormsModule} from '@angular/forms';
 })
 export class User {
 
+  changePass: string = "";
+  newPassword: string = "";
+  deleteUserName: string = "";
   password: string = "";
   userName: string = "";
   users: UserModel[] = [];
@@ -27,12 +30,14 @@ export class User {
     this.user.userName = this.userName;
     this.user.password= this.password;
     console.log(this.user);
-    this.userService.addUser(this.user).subscribe({next: (data) => {
+    this.userService.addUser(this.user).subscribe(
+      {next: (data) => {
         console.log(data);
       },
       error: (err) => {
         console.error(err);
       }});
+    this.loadUsers();
   }
 
   loadUsers(){
@@ -45,5 +50,32 @@ export class User {
         console.error(err);
       }
     });
+  }
+
+  deleteUser(){
+
+    this.userService.deleteUser(this.deleteUserName).subscribe({
+      next: (data: any) => {
+        console.log(data);
+        this.users = data;
+      },
+      error: (err: any) => {
+        console.error(err);
+      }
+    });
+    this.loadUsers();
+  }
+
+  changeUserPassword(){
+    this.userService.changeUserPassword(this.changePass,this.newPassword).subscribe({
+      next: (data: any) => {
+        console.log(data);
+        this.users = data;
+      },
+      error: (err: any) => {
+        console.error(err);
+      }
+    });
+    this.loadUsers();
   }
 }

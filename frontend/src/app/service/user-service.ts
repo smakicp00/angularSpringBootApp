@@ -20,4 +20,18 @@ export class UserService {
     console.log(user);
     return this.http.post<User>(`${this.url}/addUser`, user);
   }
+  public deleteUser(userName: string){
+    return this.http.delete<UserModel[]>(`${this.url}/deleteUser/${userName}`);
+  }
+
+  public changeUserPassword(changePass: string, newPassword: string){
+    console.log(changePass);
+    console.log(newPassword);
+    return this.http.patch(`${this.url}/changeUserPassword/${changePass}`,
+      { newPassword: newPassword },{
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+  }
 }

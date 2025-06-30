@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -37,6 +38,19 @@ public class UserController {
     public void addUser(@RequestBody User user){
         System.out.println(user);
         userService.addUser(user);
+    }
+
+    @DeleteMapping("/deleteUser/{userName}")
+    public void deleteUser(@PathVariable String userName){//DELETE
+        userService.deleteUser(userName);
+    }
+
+    @PatchMapping("/changeUserPassword/{userName}")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public void changeUserPassword(@PathVariable String userName, @RequestBody Map<String, String> map){
+        System.out.println(userName);
+        System.out.println(map.get("newPassword"));
+        userService.changeUserPassword(userName, map);
     }
 
 }

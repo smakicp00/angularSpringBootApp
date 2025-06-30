@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class UserRepository implements UserInterface {
@@ -40,4 +41,28 @@ public class UserRepository implements UserInterface {
             System.out.println(e.getMessage());
         }
     }
+
+    @Override
+    public void deleteUser(String userName) {
+        try (Connection connection = DB.source().getConnection(); PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM user WHERE userName = ?")) {
+            preparedStatement.setString(1, userName);
+            preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+    @Override
+    public void changeUserPassword(String userName, Map<String, String> map) {
+        try (Connection connection = DB.source().getConnection(); PreparedStatement preparedStatement = connection.prepareStatement("UPDATE user SET password = ? WHERE userName = ?;")) {
+            preparedStatement.setString(1, map.get("newPassword"));
+            preparedStatement.setString(2, userName);
+            preparedStatement.executeUpdate();
+            System.out.println("Password :" + map.get("newPassword") + " for user " + userName + " has been changed");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 }
