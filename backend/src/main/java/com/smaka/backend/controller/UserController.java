@@ -53,4 +53,9 @@ public class UserController {
         userService.changeUserPassword(userName, map);
     }
 
+    @PostMapping("/login")
+    public User login(@RequestBody User user){
+        return userService.login(user);
+    }
+
 }

@@ -39,4 +39,8 @@ public class UserService {
     public void changeUserPassword(String userName, Map<String, String> map) {
         userRepository.changeUserPassword(userName,map);
     }
+
+    public User login(User user) {
+        return userRepository.login(user);
+    }
 }

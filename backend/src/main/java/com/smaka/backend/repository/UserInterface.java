@@ -15,4 +15,6 @@ public interface UserInterface {
 
 
     void changeUserPassword(String userName, Map<String, String> map);
+
+    User login(User user);
 }

@@ -34,4 +34,12 @@ export class UserService {
         }
       })
   }
+
+  public login(userName: string, password: string){
+    const data = {
+      userName: userName,
+      password: password
+    }
+    return this.http.post<User>(`${this.url}/login`,data);
+  }
 }

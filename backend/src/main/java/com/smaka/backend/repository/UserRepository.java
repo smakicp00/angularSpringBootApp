@@ -65,4 +65,25 @@ public class UserRepository implements UserInterface {
         }
     }
 
+    public User login(User user){
+        String sql = "SELECT * FROM user WHERE userName = ? AND password = ?";
+        try (
+                Connection con = DB.source().getConnection();
+                PreparedStatement stm = con.prepareStatement(sql);
+                ) {
+            stm.setString(1, user.getUserName());
+            stm.setString(2, user.getPassword());
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                System.out.println("Login Successful");
+                return new User(rs.getString("username"), rs.getString("password"));
+            } else {
+                System.out.println("Login Failed");
+            }
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
 }

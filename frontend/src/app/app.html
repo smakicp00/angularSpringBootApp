@@ -1,2 +1,15 @@
+<div class="container">
+  <div class="row align-content-center align-items-center">
+    <form action="">
+      <input type="text" name="userName" [(ngModel)]="userName">
+      <input type="password" name="password" [(ngModel)]="password">
+      <input type="submit" value="Login" (click)="login()">
+      @if(message){
+        {{message}}
+      }
+    </form>
+  </div>
+</div>
+
 
 <router-outlet></router-outlet>
