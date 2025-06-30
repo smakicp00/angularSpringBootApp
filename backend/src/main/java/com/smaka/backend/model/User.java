@@ -1,5 +1,6 @@
 package com.smaka.backend.model;
 
+
 public class User {
     private String userName;
     private String password;
